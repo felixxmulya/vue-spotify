@@ -1,18 +1,49 @@
-<template>
-  <nav class="flex items-center justify-between flex-wrap bg-black p-6 text-end mx-24">
-    <div class="flex items-center flex-shrink-0 text-white">
-      <img src="" alt="Spotify" class="h-8 w-8 mr-2"/>
-      <span class="font-semibold text-xl tracking-tight">Spotify</span>
+<script>
+export default {
+  data() {
+    return {
+      isOpen: false
+    }
+  }
+}
+</script>
+
+<template id="login">
+  <nav class="login bg-black px-6 py-4">
+    <div class="flex flex-row items-center justify-between">
+      <div class="flex items-center text-white px-4">
+        <img src="" alt="Spotify" class="h-8 w-8 mr-2"/>
+        <span class="font-semibold text-xl tracking-tight">Spotify</span>
+      </div>
+      <div class="hidden md:block px-4">
+        <div class="text-sm text-white">
+          <a href="#premium" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
+            Premium
+          </a>
+          <a href="#support" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
+            Support
+          </a>
+          <a href="#download" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500">
+            Download
+          </a>
+        </div>
+      </div>
+      <div class="block md:hidden ml-auto">
+      <button @click="isOpen = !isOpen" class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+      </div>
     </div>
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-      <div class="text-sm lg:flex-grow">
-        <a href="#premium" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green-500 mr-4">
+
+    <div :class="{ 'block': isOpen, 'hidden': !isOpen }" class="md:hidden ml-auto">
+      <div class="px-2 pt-2 pb-4">
+        <a href="#premium" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500 mr-4">
           Premium
         </a>
-        <a href="#support" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green-500 mr-4">
+        <a href="#support" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500 mr-4">
           Support
         </a>
-        <a href="#download" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-green-500">
+        <a href="#download" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500">
           Download
         </a>
       </div>
@@ -20,23 +51,7 @@
   </nav>
 </template>
 
-<script>
 
-export default {
-    data() {
-        return {
-            message: 'Hello, Vue!'
-        }
-    }
-}
-</script>
 
 <style scoped>
-nav {
-    margin: 0 auto;
-}
-
-h1 {
-    color: #42b983;
-}
 </style>
