@@ -1,5 +1,7 @@
 <script>
 export default {
+  name: 'Login',
+  inject: ['isMobile'],
   data() {
     return {
       isOpen: false,
@@ -14,27 +16,27 @@ export default {
 </script>
 
 <template id="login">
-  <nav class="login bg-black px-6 py-4">
+  <nav class="login bg-black" :class="isMobile() ? '' : ''">
     <div class="flex flex-row items-center justify-between">
-      <div class="flex items-center text-white px-4">
+      <div class="flex items-center text-white" :class="isMobile() ? '' : 'px-4'">
         <img src="https://i.ibb.co/FYbMXTm/spotify-icon.png" alt="Spotify" class="h-8 w-8 mr-2"/>
         <span class="spotify-title font-semibold text-xl tracking-tight">Spotify</span>
       </div>
-      <div class="hidden md:block px-4">
+      <div v-if="!isMobile()" class="px-4">
         <div class="text-sm text-white">
           <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
             {{ link.text }}
           </a>
         </div>
       </div>
-      <div class="block md:hidden ml-auto">
-      <button @click="isOpen = !isOpen" class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white">
-        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-      </button>
+      <div v-else class="ml-auto">
+        <button @click="isOpen = !isOpen" class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white">
+          <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+        </button>
       </div>
     </div>
 
-    <div :class="{ 'block': isOpen, 'hidden': !isOpen }" class="md:hidden ml-auto">
+    <div v-if="isMobile() && isOpen" class="ml-auto">
       <div class="px-2 pt-2 pb-4">
         <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500 mr-4">
             {{ link.text }}
@@ -56,9 +58,8 @@ export default {
 
 
 
-<style scoped>
-.login{
-  padding-left: 10rem;
-  padding-right: 10rem;
-}
+<style lang="scss" scoped>
+
+ @import '@/assets/main.scss';
+
 </style>
