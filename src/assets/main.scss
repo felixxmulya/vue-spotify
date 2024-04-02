@@ -1,15 +1,68 @@
 @import './main.css';
 
 #app {
-    padding: 1rem 6rem;
+    padding: 25px;
 
     @media screen and (max-width: 768px){
-        padding: 35px;
+        padding: 25px;
     }
 }
 
-.login{
-    @media screen and (max-width: 768px){
-        padding: 1rem 1rem;
+.login-page{
+    .login-navbar{
+
+    }
+
+    .login-container{
+        max-width: 600px;
+        height: 70vh;
+        .spotify-logo{
+            margin-bottom: 1rem;
+        }
+        login-btn{
+            width: 50px;
+        }
+    }
+}
+
+.spotify-page{
+    .SideBarSpotify{
+        .header-sidebar{
+            .spotify-logo{
+                width: 8rem;
+                height: auto;
+            }
+        }
+
+        .playlist-sidebar{
+            .playlistSpotify{
+                .playlist-item{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                    max-height: 60vh;
+                    &::-webkit-scrollbar {
+                        width: 10px;
+                      }
+
+                      &::-webkit-scrollbar-track {
+                        background: #121212;
+                      }
+
+                      &::-webkit-scrollbar-thumb {
+                        background: #888;
+                      }
+
+                      &::-webkit-scrollbar-thumb:hover {
+                        background: #555;
+                    }
+                    .playlist-image{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,12 +1,8 @@
 <script>
 import '@/assets/main.scss'
-import Login from './components/Login.vue'
 
 export default {
   name: 'App',
-  components: {
-    Login
-  },
   data() {
     return {
       isOpen: false,
@@ -35,6 +31,6 @@ export default {
 
 <template>
   <div>
-    <Login />
+    <router-view />
   </div>
 </template>

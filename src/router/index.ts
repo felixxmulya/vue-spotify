@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Login from '../pages/Login.vue'
+import Spotify from '../pages/Spotify.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      name: 'login',
+      component: Login
     },
+    {
+      path: '/spotify',
+      name: '',
+      component: Spotify
+    }
   ]
 })
 

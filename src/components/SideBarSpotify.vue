@@ -1,0 +1,53 @@
+<script>
+import { HomeIcon, SearchIcon, LibraryIcon } from '@heroicons/vue/solid'
+import Playlists from './Playlists.vue'
+
+export default {
+  name: 'SideBarSpotify',
+  inject: ['isMobile'],
+  components: {
+    HomeIcon,
+    SearchIcon,
+    LibraryIcon,
+    Playlists
+  },
+  data() {
+    return {
+        pageId: 'SideBarSpotify',
+        isOpen: false,
+    }
+  },
+}
+</script>
+
+<template>
+    <div :class="pageId">
+        <div class="bg-[#121212] rounded-lg shadow-lg p-6 w-full h-full mb-5 header-sidebar">
+            <div class="mb-8">
+                <img src="https://i.ibb.co/fC0FZgs/Spotify-Logo-RGB-Green.png" alt="Spotify-Logo-RGB-Green" class="spotify-logo">
+            </div>
+            <div class="mb-4 flex items-center">
+                <HomeIcon class="h-5 w-5 mr-2" />
+                <router-link to="/spotify/home" class="hover:text-green-500">
+                    <h3>
+                        Home
+                    </h3>
+                </router-link>
+            </div>
+            <div class="flex items-center">
+                <SearchIcon class="h-5 w-5 mr-2" />
+                <router-link to="/spotify/search" class="hover:text-green-500">Search</router-link>
+            </div>
+        </div>
+        <div class="bg-[#121212] rounded-lg shadow-lg p-6 w-full h-full playlist-sidebar">
+            <div class="mb-4 flex items-center">
+                <LibraryIcon class="h-5 w-5 mr-2" />
+                <router-link to="/spotify/library" class="hover:text-green-500">Your Library</router-link>
+            </div>
+            <div class="mb-4 flex items-center">
+                <playlists/>
+            </div>
+        </div>
+
+    </div>
+</template>
