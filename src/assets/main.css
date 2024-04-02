@@ -9,7 +9,7 @@ html{
 
 @layer base{
   body{
-    @apply bg-[#000000] text-[#fff] tracking-wide
+    @apply bg-[#000000] text-[#b3b3b3] tracking-wide
   }
 
   p,a{
@@ -18,7 +18,7 @@ html{
   }
 
   h1,h2,h3,h4,h5,h6{
-    @apply font-bold text-[#fff]
+    @apply font-bold text-[#b3b3b3]
   }
 
   h1{

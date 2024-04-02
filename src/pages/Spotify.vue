@@ -1,11 +1,15 @@
 <script>
+import NavbarSpotify from '../components/NavbarSpotify.vue'
 import SideBarSpotify from '../components/SideBarSpotify.vue'
+import PlaylistMediaSpotify from '../components/PlaylistMediaSpotify.vue'
 
 export default {
   name: 'Spotify',
   inject: ['isMobile'],
   components: {
-    SideBarSpotify
+    SideBarSpotify,
+    NavbarSpotify,
+    PlaylistMediaSpotify
   },
   data() {
     return {
@@ -23,8 +27,16 @@ export default {
           <side-bar-spotify/>
         </div>
         <div class="col-span-9">
-          <!-- The rest of your Spotify page content goes here -->
+          <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full mb-5 header-sidebar">
+            <div class="mb-5">
+              <NavbarSpotify/>
+            </div>
+            <div class="mb-8">
+              <PlaylistMediaSpotify/>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
 </template>
