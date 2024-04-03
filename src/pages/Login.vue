@@ -1,7 +1,16 @@
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Login',
   inject: ['isMobile'],
+  beforeRouteEnter(to, from, next) {
+    if (localStorage.getItem('spotify_access_token')) {
+      next('/home');
+    } else {
+      next();
+    }
+  },
   data() {
     return {
       pageId: 'login-page',
@@ -29,27 +38,14 @@ export default {
     // If the hash contains an access token, the user was just redirected from Spotify
     if (hash.access_token) {
     localStorage.setItem('spotify_access_token', hash.access_token)
-    this.$router.push('/spotify')
+    this.$router.push('/home')
     }
   },
   methods: {
-    redirectToLogin() {
-      const clientId = 'c9e427559756478e9e29acde01d39372'
-      const redirectUrl = "http://localhost:5173/"
-      const apiUrl = 'https://accounts.spotify.com/authorize'
-      const scopes = [
-        "user-read-email",
-        "user-read-private",
-        "user-modify-playback-state",
-        "user-read-playback-state",
-        "user-read-currently-playing",
-        "user-read-recently-played",
-        "user-top-read",
-        "user-read-playback-position",
-      ]
-
-      window.location.href = `${apiUrl}?client_id=${clientId}&redirect_uri=${redirectUrl}&scope=${scopes.join(' ')}&response_type=token&show_dialog=true`
-    }
+    ...mapActions('loginStore', ['redirectToLogin']),
+    login() {
+         this.$store.dispatch('redirectToLogin')
+    },
   }
 }
 </script>
@@ -87,7 +83,7 @@ export default {
     
     <div class="container mx-auto login-container flex flex-col justify-center">
       <img src="https://i.ibb.co/fC0FZgs/Spotify-Logo-RGB-Green.png" alt="Spotify-Logo-RGB-Green" class="spotify-logo">
-      <button @click="redirectToLogin" class="login-btn mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded-full w-32 block mx-auto"> Log in </button>
+      <button @click="login" class="login-btn mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2 rounded-full w-32 block mx-auto"> Log in </button>
     </div>
   </div>
 

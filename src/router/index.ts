@@ -11,7 +11,7 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/spotify',
+      path: '/home',
       name: '',
       component: Spotify
     }
