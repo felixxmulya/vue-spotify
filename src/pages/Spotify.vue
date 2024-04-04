@@ -1,8 +1,8 @@
 <script>
-import NavbarSpotify from '../components/NavbarSpotify.vue'
-import SideBarSpotify from '../components/SideBarSpotify.vue'
-import PlaylistMediaSpotify from '../components/PlaylistMediaSpotify.vue'
-import PlaylistCategories from '../components/PlaylistCategories.vue'
+import NavbarSpotify from '../components/spotifyHome/NavbarSpotify.vue'
+import SideBarSpotify from '../components/spotifyHome/SideBarSpotify.vue'
+import PlaylistMediaSpotify from '../components/spotifyHome/PlaylistMediaSpotify.vue'
+import PlaylistCategories from '../components/spotifyHome/PlaylistCategories.vue'
 
 export default {
   name: 'Spotify',
@@ -11,7 +11,7 @@ export default {
     SideBarSpotify,
     NavbarSpotify,
     PlaylistMediaSpotify,
-    PlaylistCategories
+    PlaylistCategories,
   },
   data() {
     return {
@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-    <div :class="pageId" class=" overflow-auto">
-      <div class="grid grid-cols-12 gap-4 h-full">
+    <div :class="pageId" class="h-screen">
+      <div class="grid grid-cols-12 gap-4">
         <div class="col-span-3 h-full">
           <side-bar-spotify/>
         </div>

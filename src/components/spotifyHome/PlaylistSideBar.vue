@@ -1,27 +1,24 @@
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'Playlists',
+  name: 'PlaylistSideBar',
   inject: ['isMobile'],
   components: {
 
   },
   data() {
     return {
-        playlists: [],
-        pageId: 'playlistSpotify',
+        pageId: 'PlaylistSideBarpotify',
         isOpen: false,
     }
   },
-  async created() {
-    const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
-      }
-    })
-    this.playlists = response.data.items
-  }
+  computed: {
+    ...mapState(['playlists']),
+  },
+  created() {
+    this.$store.dispatch('fetchPlaylists')
+  },
 }
 </script>
 

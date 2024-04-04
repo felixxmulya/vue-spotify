@@ -1,6 +1,6 @@
 <script>
 import { HomeIcon, SearchIcon, LibraryIcon } from '@heroicons/vue/solid'
-import Playlists from './Playlists.vue'
+import PlaylistSideBar from './PlaylistSideBar.vue'
 
 export default {
   name: 'SideBarSpotify',
@@ -9,7 +9,7 @@ export default {
     HomeIcon,
     SearchIcon,
     LibraryIcon,
-    Playlists
+    PlaylistSideBar
   },
   data() {
     return {
@@ -28,20 +28,20 @@ export default {
             </div>
             <div class="mb-4 flex items-center text-white">
                 <HomeIcon class="h-5 w-5 mr-2" />
-                <router-link to="/spotify/home" class="">Home</router-link>
+                <router-link to="/home" class="">Home</router-link>
             </div>
             <div class="flex items-center text-white">
                 <SearchIcon class="h-5 w-5 mr-2" />
-                <router-link to="/spotify/search">Search</router-link>
+                <router-link to="/search">Search</router-link>
             </div>
         </div>
         <div class="bg-[#121212] rounded-lg shadow-lg p-6 w-full h-full playlist-sidebar">
             <div class="mb-4 flex items-center hover:text-white">
                 <LibraryIcon class="h-5 w-5 mr-2" />
-                <router-link to="/spotify/library" >Your Library</router-link>
+                <router-link to="/playlist" >Your Library</router-link>
             </div>
             <div class="mb-4 flex items-center">
-                <playlists/>
+                <PlaylistSideBar/>
             </div>
         </div>
 

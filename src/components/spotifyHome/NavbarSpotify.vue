@@ -52,7 +52,8 @@ export default {
             <div v-show="isOpen" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-[#242424] ring-1 ring-black ring-opacity-5">
                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                   <template v-if="isLogin">
-                     <a href="https://www.spotify.com/us/account/overview/" target="_blank" class="block px-4 py-2 text-sm hover:bg-[#2a2a2a] rounded-md " role="menuitem">Profile</a>
+                     <a href="https://www.spotify.com/us/account/overview/" target="_blank" class="block px-4 py-2 text-sm hover:bg-[#2a2a2a] rounded-md " role="menuitem">Account</a>
+                     <a href="#" class="block px-4 py-2 text-sm hover:bg-[#2a2a2a] rounded-md " role="menuitem">Profile</a>
                      <a href="#" @click.prevent="logout" class="block px-4 py-2 text-sm border-t border-gray-600 hover:bg-[#2a2a2a] rounded-md " role="menuitem">Log out</a>
                   </template>
                </div>
