@@ -1,7 +1,7 @@
 <script>
 import SideBarSpotify from '../components/spotifyHome/SideBarSpotify.vue'
 import NavbarSpotify from '../components/spotifyHome/NavbarSpotify.vue'
-import PlaylistHeader from '../components/spotifyPlaylist/playlistHeader.vue'
+import PlaylistTitle from '../components/spotifyPlaylist/PlaylistTitle.vue'
 
 export default {
   name: 'Playlist',
@@ -9,7 +9,7 @@ export default {
   components: {
       NavbarSpotify,
       SideBarSpotify,
-    PlaylistHeader
+      PlaylistTitle
   },
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
              <NavbarSpotify/>
            </div>
            <div class="mb-5">
-               <PlaylistHeader/>
+             <playlist-title/>
            </div>
          </div>
        </div>
