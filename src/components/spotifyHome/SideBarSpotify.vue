@@ -40,7 +40,7 @@ export default {
                 <LibraryIcon class="h-5 w-5 mr-2" />
                 <router-link to="/playlist" >Your Library</router-link>
             </div>
-            <div class="mb-4 flex items-center">
+            <div class="flex items-center">
                 <PlaylistSideBar/>
             </div>
         </div>

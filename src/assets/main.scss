@@ -1,47 +1,60 @@
 @import './main.css';
 
 #app {
-    padding: 20px;
+    padding: 15px;
+    overflow: hidden;
 
-    @media screen and (max-width: 768px){
-        padding: 25px;
-    }
-
-    .SideBarSpotify{
-        .header-sidebar{
-            .spotify-logo{
-                width: 8rem;
-                height: auto;
+    table{
+        tr{
+            td{
+                border: none;
             }
         }
+        th{
+            border-bottom: 1px solid #808080;
+        }
+    }
 
-        .playlist-sidebar{
-            .PlaylistSideBarpotify{
-                .playlist-item{
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 1rem;
-                    max-height: 80vh;
-                    &::-webkit-scrollbar {
-                        width: 10px;
-                      }
+    @media screen and (max-width: 768px){
+        padding: 10px;
+    }
+}
 
-                      &::-webkit-scrollbar-track {
-                        background: #121212;
-                      }
+.SideBarSpotify{
+    .header-sidebar{
+        .spotify-logo{
+            width: 8rem;
+            height: auto;
+        }
+    }
 
-                      &::-webkit-scrollbar-thumb {
-                        background: #888;
-                      }
+    .playlist-sidebar{
+        .PlaylistSideBarpotify{
+            .playlist-item{
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                max-height: 90vh;
+                height: auto;
+                &::-webkit-scrollbar {
+                    width: 10px;
+                  }
 
-                      &::-webkit-scrollbar-thumb:hover {
-                        background: #555;
-                    }
-                    .playlist-image{
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 10px;
-                    }
+                  &::-webkit-scrollbar-track {
+                    background: #121212;
+                  }
+
+                  &::-webkit-scrollbar-thumb {
+                    background: #888;
+                  }
+
+                  &::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+                .playlist-image{
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 10px;
                 }
             }
         }
@@ -65,9 +78,32 @@
     }
 }
 
+.spotify-page{
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-home{
+        height: 120vh;
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 10px;
+            display: none;
+        }
+    }
+}
+
 .playlist-page{
+    max-height: 105vh;
+    width: 100%;
+    overflow: auto;
+    &::-webkit-scrollbar {
+        width: 10px;
+        display: none;
+    }
+
     .header-title{
-        font-size: 6rem;
+        font-size: 4rem;
     }
     .playlist-header-image{
         width: 230px;
@@ -75,7 +111,23 @@
     }
 
     .playlist-list{
-        
+        height: 102vh;
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            width: 10px;
+          }
+    
+          &::-webkit-scrollbar-track {
+            background: #121212;
+          }
+    
+          &::-webkit-scrollbar-thumb {
+            background: #888;
+          }
+    
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     }
 
 }

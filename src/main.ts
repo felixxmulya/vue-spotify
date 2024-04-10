@@ -7,6 +7,7 @@ import vClickOutside from 'v-click-outside'
 import App from './App.vue'
 import router from './router'
 import loginStore from './stores/loginStore'
+//import playlistStore from './stores/playlistStore'
 
 const app = createApp(App)
 
@@ -14,5 +15,6 @@ app.use(createPinia())
 app.use(router)
 app.use(vClickOutside)
 app.use(loginStore)
+//app.use(playlistStore)
 
 app.mount('#app')

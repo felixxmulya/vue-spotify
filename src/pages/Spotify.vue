@@ -23,18 +23,27 @@ export default {
 </script>
 
 <template>
-    <div :class="pageId" class="h-screen">
+    <div :class="pageId" class="h-full w-full">
       <div class="grid grid-cols-12 gap-4">
         <div class="col-span-3 h-full">
           <side-bar-spotify/>
         </div>
-        <div class="col-span-9 h-full">
-          <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full mb-5 header-sidebar ">
+        <div class="col-span-9 h-full ">
+          <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full main-home">
             <div class="mb-5">
               <NavbarSpotify/>
             </div>
             <div class="mb-5">
               <PlaylistMediaSpotify/>
+            </div>
+            <div class="mb-5">
+              <PlaylistCategories/>
+            </div>
+            <div class="mb-5">
+              <PlaylistCategories/>
+            </div>
+            <div class="mb-5">
+              <PlaylistCategories/>
             </div>
             <div class="mb-5">
               <PlaylistCategories/>

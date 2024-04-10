@@ -1,7 +1,6 @@
 <script>
 import SideBarSpotify from '../components/spotifyHome/SideBarSpotify.vue'
 import NavbarSpotify from '../components/spotifyHome/NavbarSpotify.vue'
-import PlaylistTitle from '../components/spotifyPlaylist/PlaylistTitle.vue'
 import PlaylistList from '../components/spotifyPlaylist/PlaylistList.vue'
 
 export default {
@@ -10,7 +9,6 @@ export default {
   components: {
       NavbarSpotify,
       SideBarSpotify,
-      PlaylistTitle,
       PlaylistList
   },
   data() {
@@ -23,20 +21,17 @@ export default {
 </script>
 
 <template>
-   <div :class="pageId" class="h-screen">
+   <div :class="pageId" class="h-full w-full">
      <div class="grid grid-cols-12 gap-4">
        <div class="col-span-3 h-full">
          <side-bar-spotify/>
        </div>
        <div class="col-span-9 h-full">
-         <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full mb-5 header-sidebar ">
+         <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full ">
            <div class="mb-2">
              <NavbarSpotify/>
            </div>
-           <div class="mb-2">
-             <playlist-title/>
-           </div>
-           <div class="mb-5">
+           <div>
             <playlist-list/>
            </div>
          </div>
