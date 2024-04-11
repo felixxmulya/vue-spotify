@@ -1,6 +1,6 @@
 <script>
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/outline'
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 
 export default {
    name: 'NavbarSpotify',
@@ -20,15 +20,15 @@ export default {
          this.$store.dispatch('redirectToLogin')
       },
       logout() {
-      this.$store.dispatch('logout');
-      this.isOpen = false;
+      this.$store.dispatch('logout')
+      this.isOpen = false
     }
    },
    computed: {
     ...mapState(['isLogin', 'imageUrl']),
   },
   created() {
-    this.$store.dispatch('fetchUserData');
+    this.$store.dispatch('fetchUserData')
   },
 }
 </script>

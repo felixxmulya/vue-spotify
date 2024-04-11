@@ -2,7 +2,6 @@
 
 #app {
     padding: 15px;
-    overflow: hidden;
 
     table{
         tr{
@@ -38,15 +37,15 @@
                 height: auto;
                 &::-webkit-scrollbar {
                     width: 10px;
-                  }
+                }
 
-                  &::-webkit-scrollbar-track {
-                    background: #121212;
-                  }
+                &::-webkit-scrollbar-track {
+                background: #121212;
+                }
 
-                  &::-webkit-scrollbar-thumb {
-                    background: #888;
-                  }
+                &::-webkit-scrollbar-thumb {
+                background: #888;
+                }
 
                   &::-webkit-scrollbar-thumb:hover {
                     background: #555;
@@ -79,12 +78,9 @@
 }
 
 .spotify-page{
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    overflow: hidden;
 
     .main-home{
-        height: 120vh;
         overflow: auto;
         &::-webkit-scrollbar {
             width: 10px;
@@ -94,8 +90,6 @@
 }
 
 .playlist-page{
-    max-height: 105vh;
-    width: 100%;
     overflow: auto;
     &::-webkit-scrollbar {
         width: 10px;
@@ -105,13 +99,15 @@
     .header-title{
         font-size: 4rem;
     }
-    .playlist-header-image{
-        width: 230px;
-        height: auto;
-    }
+    .playlist-header-image {
+        width: 100%;
+        max-width: 230px;
+        max-height: 230px;
+        height: 100%;
+      }
 
     .playlist-list{
-        height: 102vh;
+        height: 112vh;
         overflow-y: auto;
         &::-webkit-scrollbar {
             width: 10px;

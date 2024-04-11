@@ -17,25 +17,26 @@ export default {
         isOpen: false,
     }
   },
+  
 }
 </script>
 
 <template>
    <div :class="pageId" class="h-full w-full">
-     <div class="grid grid-cols-12 gap-4">
-       <div class="col-span-3 h-full">
-         <side-bar-spotify/>
-       </div>
-       <div class="col-span-9 h-full">
-         <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full ">
-           <div class="mb-2">
-             <NavbarSpotify/>
-           </div>
-           <div>
-            <playlist-list/>
-           </div>
-         </div>
-       </div>
-     </div>
+    <div class="flex grid grid-cols-12 gap-4">
+        <div class="col-span-3 h-full">
+            <side-bar-spotify/>
+        </div>
+        <div class="col-span-9 h-full">
+            <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full ">
+                <div class="mb-2">
+                    <NavbarSpotify/>
+                </div>
+                <div>
+                    <playlist-list/>
+                </div>
+            </div>
+        </div>
+    </div>
    </div>
 </template>

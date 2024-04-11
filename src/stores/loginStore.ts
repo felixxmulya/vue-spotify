@@ -72,11 +72,15 @@ export default createStore({
         },
         async fetchPlaylists({ commit }) {
             const response = await axios.get('https://api.spotify.com/v1/me/playlists', {
-              headers: {
-                'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
-              }
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                }
             })
             commit('SET_PLAYLISTS', response.data.items)
+
+            response.data.items.forEach(playlist => {
+                console.log(playlist.id);
+            })
         },
     },
 })

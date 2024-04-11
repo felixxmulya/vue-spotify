@@ -1,5 +1,5 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 
 export default {
   name: 'PlaylistMediaSpotify',
@@ -16,7 +16,7 @@ export default {
     ...mapState(['isLogin', 'recentlyPlayedTracks']),
   },
   created() {
-    this.$store.dispatch('fetchRecentlyPlayedTracks');
+    this.$store.dispatch('fetchRecentlyPlayedTracks')
   },
   methods: {
     truncateText(text) {
