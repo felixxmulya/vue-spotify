@@ -43,6 +43,9 @@ export default {
             <div class="mb-5">
               <PlaylistCategories/>
             </div>
+            <div class="mb-5">
+              <PlaylistCategories/>
+            </div>
           </div>
         </div>
       </div>

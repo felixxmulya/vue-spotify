@@ -4,13 +4,6 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Login',
   inject: ['isMobile'],
-  beforeRouteEnter(to, from, next) {
-    if (localStorage.getItem('spotify_access_token')) {
-      next('/home');
-    } else {
-      next();
-    }
-  },
   data() {
     return {
       pageId: 'login-page',
