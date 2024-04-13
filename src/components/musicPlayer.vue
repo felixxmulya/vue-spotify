@@ -93,10 +93,14 @@ export default {
     <div :class="pageId" class="pb-20" v-if="isLogin">
         <div class="bg-black text-white flex flex-col md:flex-row items-center px-12 fixed bottom-0 w-full h-auto justify-between">
             <div class="flex items-center gap-2 mb-4 md:mb-0">
-                <img :src="currentlyPlayingTrack?.albumUrl" alt="track image" class="w-14 h-14 rounded-md object-cover">
-                <div class="ml-4" style="width: 200px">
-                    <p class="text-sm truncate">{{ currentlyPlayingTrack?.name }}</p>
-                    <p class="text-sm text-gray-400 truncate">{{ currentlyPlayingTrack?.artist }}</p>
+                <img v-if="currentlyPlayingTrack" :src="currentlyPlayingTrack.albumUrl" alt="track image" class="w-14 h-14 rounded-md object-cover">
+                <div v-if="currentlyPlayingTrack" class="ml-4" style="width: 200px">
+                    <p class="text-sm truncate" :title="currentlyPlayingTrack.name">{{ currentlyPlayingTrack.name }}</p>
+                    <p class="text-sm text-gray-400 truncate" :title="currentlyPlayingTrack.artist">{{ currentlyPlayingTrack.artist }}</p>
+                </div>
+                <div v-else class="ml-4" style="width: 200px">
+                    <p class="text-sm truncate">No track is currently playing</p>
+                    <p class="text-sm text-gray-400 truncate"></p>
                 </div>
             </div>
             <div class="flex flex-col items-center w-full md:w-1/3 mb-4 md:mb-0 mt-1">
