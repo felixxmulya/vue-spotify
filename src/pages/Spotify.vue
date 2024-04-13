@@ -3,6 +3,7 @@ import NavbarSpotify from '../components/spotifyHome/NavbarSpotify.vue'
 import SideBarSpotify from '../components/spotifyHome/SideBarSpotify.vue'
 import PlaylistMediaSpotify from '../components/spotifyHome/PlaylistMediaSpotify.vue'
 import PlaylistCategories from '../components/spotifyHome/PlaylistCategories.vue'
+import MusicPlayer from '../components/MusicPlayer.vue'
 import { mapState } from 'vuex'
 
 export default {
@@ -13,6 +14,7 @@ export default {
     NavbarSpotify,
     PlaylistMediaSpotify,
     PlaylistCategories,
+    MusicPlayer
   },
   data() {
     return {
