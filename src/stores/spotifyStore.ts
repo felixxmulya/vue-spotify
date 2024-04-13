@@ -16,7 +16,9 @@ const initialState = {
         "user-read-playback-position",
     ],
     isLogin: false,
+    isPlaying: false,
     imageUrl: '',
+    currentlyPlayingTrack: null,
     recentlyPlayedTracks: [],
     recentlyPlayedPlaylists: [],
     userPlaylists: [],
@@ -26,6 +28,7 @@ const initialState = {
 
 export default createStore({
     state: { ...initialState },
+
     mutations: {
         SET_LOGGED_IN(state, value) {
             state.isLogin = value
@@ -51,6 +54,12 @@ export default createStore({
         setSongs(state, songs) {
             state.songs = songs
         },
+        SET_PLAYING(state, value) {
+            state.isPlaying = value
+        },
+        SET_CURRENTLY_PLAYING_TRACK(state, track) {
+            state.currentlyPlayingTrack = track
+        },
     },
     actions: {
         redirectToLogin({ state }) {
@@ -74,11 +83,102 @@ export default createStore({
         },
         async fetchRecentlyPlayedTracks({ commit }) {
             const response = await axios.get('https://api.spotify.com/v1/me/player/recently-played', {
-              headers: {
-                'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
-              }
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                }
             })
             commit('SET_RECENTLY_PLAYED_TRACKS', response.data.items)
+        },
+        async fetchCurrentlyPlayingTrack({ commit }) {
+            try {
+                const response = await axios.get('https://api.spotify.com/v1/me/player/currently-playing', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                    }
+                });
+                if (response.data && response.data.item) {
+                    const track = {
+                        name: response.data.item.name,
+                        artist: response.data.item.artists.map(artist => artist.name).join(', '),
+                        albumUrl: response.data.item.album.images[0].url
+                    };
+                    commit('SET_CURRENTLY_PLAYING_TRACK', track);
+                } else {
+                    console.log('No currently playing track found.');
+                }
+            } catch (error) {
+                console.error('Error fetching currently playing track:', error);
+            }
+        },
+        async skipToNextTrack({ commit, dispatch }) {
+            try {
+                const response = await fetch('https://api.spotify.com/v1/me/player/next', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to skip to the next track');
+                }
+                console.log('Skipped to next track');
+                // Ensure the track information is fetched after changing the track
+                await dispatch('fetchCurrentlyPlayingTrack');
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async skipToPreviousTrack({ commit, dispatch }) {
+            try {
+                const response = await fetch('https://api.spotify.com/v1/me/player/previous', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to skip to the previous track');
+                }
+                console.log('Skipped to previous track');
+                // Ensure the track information is fetched after changing the track
+                await dispatch('fetchCurrentlyPlayingTrack');
+            } catch (error) {
+                console.error(error);
+            }
+        },
+        async pauseTrack({ dispatch }) {
+            try {
+                const response = await fetch('https://api.spotify.com/v1/me/player/pause', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                    }
+                })
+                if (!response.ok) {
+                    throw new Error('Failed to pause the track')
+                }
+                console.log('Paused track')
+                await dispatch('fetchRecentlyPlayedTracks')
+            } catch (error) {
+                console.error(error)
+            }
+        },
+        async resumeTrack({ dispatch }) {
+            try {
+                const response = await fetch('https://api.spotify.com/v1/me/player/play', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('spotify_access_token')}`
+                    }
+                })
+                if (!response.ok) {
+                    throw new Error('Failed to resume the track')
+                }
+                console.log('Resumed track')
+                await dispatch('fetchRecentlyPlayedTracks')
+            } catch (error) {
+                console.error(error)
+            }
         },
         async fetchRecentlyPlayedPlaylists({ commit }) {
             try {
