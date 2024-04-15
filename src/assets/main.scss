@@ -3,6 +3,10 @@
 #app {
     padding: 15px;
 
+    active{
+        color: #1ED760;
+    }
+
     table{
         tr{
             td{
@@ -13,7 +17,6 @@
             border-bottom: 1px solid #808080;
         }
     }
-
 
     .music-player {
         input[type='range'] {
