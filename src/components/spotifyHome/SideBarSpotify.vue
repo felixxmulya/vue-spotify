@@ -21,12 +21,6 @@ export default {
     computed: {
         ...mapState(['isSidebarVisible', 'isMobile']),
     },
-    mounted() {
-    this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
-    window.addEventListener('resize', () => {
-      this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
-    })
-  },
 }
 </script>
 
@@ -36,10 +30,10 @@ export default {
             <div class="mb-8">
                 <img src="https://i.ibb.co/fC0FZgs/Spotify-Logo-RGB-Green.png" alt="Spotify-Logo-RGB-Green" class="spotify-logo">
             </div>
-            <div class="mb-4 flex items-center text-white">
-                <router-link to="/home" class="flex items-center justify-center">
-                    <HomeIcon class="h-5 w-5 mr-2" />
-                    <p class="hidden md:block">Home</p>
+            <div class="mb-4 flex items-center text-white" :class="isMobile ? 'justify-center' : ''">
+                <router-link to="/home" class="flex items-center" >
+                    <HomeIcon class="h-5 w-5 mr-2"  />
+                    <p class="hidden sm:block">Home</p>
                 </router-link>
             </div>
             <!--
@@ -51,10 +45,10 @@ export default {
             </div>
             -->
         </div>
-        <div class="bg-[#121212] rounded-lg shadow-lg p-6 w-full h-full playlist-sidebar">
-            <div class="mb-4 flex items-center hover:text-white cursor-pointer">
+        <div class="bg-[#121212] rounded-lg shadow-lg w-full h-full playlist-sidebar" :class="isMobile ? '' : 'p-6'">
+            <div class="mb-4 flex items-center hover:text-white cursor-pointer" :class="isMobile ? 'justify-center' : ''">
                 <LibraryIcon class="h-5 w-5 mr-2"/>
-                <p class="hidden md:block">Your Library</p>
+                <p class="hidden sm:block">Your Library</p>
             </div>
             <div class="flex items-center">
                 <PlaylistSideBar/>

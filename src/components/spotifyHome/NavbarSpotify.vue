@@ -4,7 +4,6 @@ import { mapState } from 'vuex'
 
 export default {
    name: 'NavbarSpotify',
-   inject: ['isMobile'],
    components: {
       ChevronLeftIcon,
       ChevronRightIcon,
@@ -40,9 +39,11 @@ export default {
 <template>
     <div :class="pageId">
       <nav class="h-16 flex items-center px-8 text-white">
+         <!--
          <button @click="toggleSidebar" class="mr-2 bg-black rounded-full p-1 block md:hidden">
             <MenuIcon class="h-6 w-6 text-white"/>
          </button>
+         -->
          <button class="mr-2 bg-black rounded-full p-1">
             <ChevronLeftIcon class="h-6 w-6 text-white"/>
          </button>

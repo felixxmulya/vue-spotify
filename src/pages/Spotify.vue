@@ -8,7 +8,6 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Spotify',
-  inject: ['isMobile'],
   components: {
     SideBarSpotify,
     NavbarSpotify,

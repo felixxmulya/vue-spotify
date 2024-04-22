@@ -32,11 +32,11 @@ export default {
 <template>
    <div :class="pageId">
     <div class="flex gap-4 h-full">
-        <div :class="isSidebarVisible ? (isMobile ? 'w-1/3' : 'w-1/3') : 'w-full'">
-            <side-bar-spotify v-if="isSidebarVisible"/>
+        <div class="w-1/3">
+            <side-bar-spotify/>
         </div>
         <div class="w-full">
-            <div class="bg-[#121212] rounded-lg shadow-lg p-4 h-full" :class="!isMobile ? 'w-full' : ''">
+            <div class="bg-[#121212] rounded-lg shadow-lg p-4 h-full">
                 <div class="mb-2">
                     <NavbarSpotify/>
                 </div>

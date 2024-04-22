@@ -1,11 +1,11 @@
 <script>
-import MusicPlayer from './components/MusicPlayer.vue'
+import musicPlayer from './components/musicPlayer.vue'
 import '@/assets/main.scss'
 
 export default {
   name: 'App',
   components: {
-    MusicPlayer
+    musicPlayer
   },
   data() {
     return {

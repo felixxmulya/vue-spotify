@@ -23,7 +23,7 @@ export default {
     this.fetchPlaylistSong(this.$route.params.id)
   },
   computed: {
-    ...mapState(['selectedPlaylist', 'songs'])
+    ...mapState(['selectedPlaylist', 'songs', 'isMobile'])
   },
   methods: {
     ...mapActions(['fetchPlaylistSong']),
@@ -48,14 +48,14 @@ export default {
 <template>
    <div :class="pageId">
     <div class="bg-[#121212] text-white p-4 flex items-center" v-if="selectedPlaylist">
-        <img :src="selectedPlaylist.image" alt="Playlist Image" class="playlist-header-image mr-6 bg-white rounded-md">
+        <img :src="selectedPlaylist.image" alt="Playlist Image" class="playlist-header-image mr-6 bg-white rounded-md" >
         <div class="">
-            <h3>Playlist</h3>
+            <h3 >Playlist</h3>
             <h1 class="header-title text-white mb-5">{{ selectedPlaylist.title }}</h1>
-            <p class="text-sm text-gray-400 ">{{ selectedPlaylist.description }}</p>
+            <p class="text-sm text-gray-400 " >{{ selectedPlaylist.description }}</p>
         </div>
     </div>
-    <table class="table-auto text-left">
+    <table class="table-auto text-left" >
         <tr>
           <th class="px-4 py-2" v-for="item in tableTitle" :key="item.key" :style="{ width: item.width }">{{ item.value }}</th>
         </tr>
