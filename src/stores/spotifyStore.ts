@@ -33,8 +33,8 @@ export default createStore({
     state: { ...initialState },
 
     mutations: {
-        SET_IS_MOBILE(state, payload) {
-            state.isMobile = payload
+        SET_IS_MOBILE(state) {
+            state.isMobile = window.innerWidth <= 768
         },
         TOGGLE_SIDEBAR(state) {
             state.isSidebarVisible = !state.isSidebarVisible
@@ -74,6 +74,12 @@ export default createStore({
         }
     },
     actions: {
+        isMobile({ commit }) {
+            commit('isMobile')
+            window.addEventListener('resize', () => {
+                commit('isMobile')
+            })
+        },
         redirectToLogin({ state }) {
              const redirectUrl = window.location.hostname === 'localhost' ? 'http://localhost:5173/' : 'https://vue-spotify88-clone.vercel.app/'
             window.location.href = `${state.apiUrl}?client_id=${state.clientId}&redirect_uri=${redirectUrl}&scope=${state.scopes.join(' ')}&response_type=token&show_dialog=true`
@@ -97,7 +103,7 @@ export default createStore({
         logout({ commit }) {
             localStorage.removeItem('spotify_access_token')
             commit('RESET_STATE')
-            window.location.reload()
+            window.location.href = '/'
         },
         fetchRecentlyPlayedTracks({ commit }) {
             axios.get('https://api.spotify.com/v1/me/player/recently-played', {

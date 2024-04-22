@@ -53,21 +53,21 @@ export default {
           <img src="https://i.ibb.co/FYbMXTm/spotify-icon.png" alt="Spotify" class="h-auto w-10 mr-2"/>
           <span class="spotify-title font-semibold text-xl tracking-tight">Spotify</span>
         </router-link>
-        <div v-if="!isMobile" class="px-4">
+        <div class="px-4 hidden md:block">
           <div class="text-sm text-white">
             <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
               {{ link.text }}
             </a>
           </div>
         </div>
-        <div v-else class="ml-auto">
+        <div class="md:hidden ml-auto">
           <button @click="isOpen = !isOpen" class="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white">
             <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
           </button>
         </div>
       </div>
 
-      <div v-if="isMobile && isOpen" class="ml-auto">
+      <div v-if="isOpen" class="ml-auto">
         <div class="px-2 pt-2 pb-4">
           <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500 mr-4">
               {{ link.text }}
