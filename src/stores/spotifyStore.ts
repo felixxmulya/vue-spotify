@@ -35,7 +35,7 @@ export default createStore({
 
     mutations: {
         SET_IS_MOBILE(state, payload) {
-            state.isMobile = payload
+            state.isMobile = payload;
         },
         TOGGLE_SIDEBAR(state) {
             state.isSidebarVisible = !state.isSidebarVisible
@@ -122,7 +122,7 @@ export default createStore({
                 if (response.data && response.data.item) {
                     const track = {
                         name: response.data.item.name,
-                        artist: response.data.item.artists.map(artist => artist.name).join(', '),
+                        artist: response.data.item.artists.map((artist: { name: string }) => artist.name).join(', '),
                         albumUrl: response.data.item.album.images[0].url,
                         duration: response.data.item.duration_ms / 60000
                     }
@@ -332,10 +332,10 @@ export default createStore({
             })
             .then(responseTracks => {
                 if (responseTracks.data) {
-                    const songs = responseTracks.data.items.map((item, index) => {
+                    const songs = responseTracks.data.items.map((item: any, index: number) => {
                         const dateAdded = new Date(item.added_at)
                         const now = new Date()
-                        const diffTime = Math.abs(now - dateAdded)
+                        const diffTime = Math.abs(now.getTime() - dateAdded.getTime())
                         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) 
                         let formattedDate
 
