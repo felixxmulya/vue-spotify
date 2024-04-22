@@ -1,10 +1,8 @@
 <script>
 import { mapActions, mapState } from 'vuex'
-import { PlayIcon } from '@heroicons/vue/solid'
 
 export default {
   components: {
-    PlayIcon,
   },
   data() {
     return {
