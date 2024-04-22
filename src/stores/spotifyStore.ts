@@ -3,7 +3,6 @@ import axios from 'axios'
 
 const initialState = {
     clientId: 'c9e427559756478e9e29acde01d39372',
-    redirectUrl: 'http://localhost:5173/',
     apiUrl: 'https://accounts.spotify.com/authorize',
     scopes: [
         "user-read-email",
@@ -76,7 +75,7 @@ export default createStore({
     },
     actions: {
         redirectToLogin({ state }) {
-            const redirectUrl = process.env.NODE_ENV === 'production' ? 'https://vue-spotify88-clone.vercel.app/' : state.redirectUrl;
+             const redirectUrl = window.location.hostname === 'localhost' ? 'http://localhost:5173/' : 'https://vue-spotify88-clone.vercel.app/'
             window.location.href = `${state.apiUrl}?client_id=${state.clientId}&redirect_uri=${redirectUrl}&scope=${state.scopes.join(' ')}&response_type=token&show_dialog=true`
         },
         fetchUserData({ commit }) {
