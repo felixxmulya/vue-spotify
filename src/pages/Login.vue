@@ -1,9 +1,8 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Login',
-  inject: ['isMobile'],
   data() {
     return {
       pageId: 'login-page',
@@ -39,7 +38,10 @@ export default {
     login() {
          this.$store.dispatch('redirectToLogin')
     },
-  }
+  },
+  computed: {
+    ...mapState(['isLogin', 'isMobile']),
+  },
 }
 </script>
 
@@ -47,11 +49,11 @@ export default {
   <div :class="pageId">
     <nav class="login-navbar bg-black">
       <div class="flex flex-row items-center justify-between">
-        <router-link to="/" class="flex items-center text-white" >
+        <router-link to="/" class="flex items-center text-white" :class="isMobile ? '' : 'px-4'" >
           <img src="https://i.ibb.co/FYbMXTm/spotify-icon.png" alt="Spotify" class="h-auto w-10 mr-2"/>
           <span class="spotify-title font-semibold text-xl tracking-tight">Spotify</span>
         </router-link>
-        <div class="px-4">
+        <div v-if="!isMobile" class="px-4">
           <div class="text-sm text-white">
             <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
               {{ link.text }}
@@ -65,7 +67,7 @@ export default {
         </div>
       </div>
 
-      <div v-if="isMobile() && isOpen" class="ml-auto">
+      <div v-if="isMobile && isOpen" class="ml-auto">
         <div class="px-2 pt-2 pb-4">
           <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 text-white hover:text-green-500 mr-4">
               {{ link.text }}

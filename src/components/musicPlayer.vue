@@ -9,7 +9,6 @@ library.add(faRandom, faStepBackward, faPlayCircle, faPauseCircle, faPause, faSt
 
 export default {
     name: 'musicPlayer',
-    inject: ['isMobile'],
     components: {
         VolumeUpIcon,
         FontAwesomeIcon,
