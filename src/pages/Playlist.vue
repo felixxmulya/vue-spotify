@@ -2,33 +2,41 @@
 import SideBarSpotify from '../components/spotifyHome/SideBarSpotify.vue'
 import NavbarSpotify from '../components/spotifyHome/NavbarSpotify.vue'
 import PlaylistList from '../components/spotifyPlaylist/PlaylistList.vue'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'Playlist',
-  inject: ['isMobile'],
-  components: {
-      NavbarSpotify,
-      SideBarSpotify,
-      PlaylistList
-  },
-  data() {
-    return {
-        pageId: 'playlist-page',
-        isOpen: false,
-    }
-  },
-  
+    name: 'Playlist',
+    components: {
+        NavbarSpotify,
+        SideBarSpotify,
+        PlaylistList
+    },
+    data() {
+        return {
+            pageId: 'playlist-page',
+            isOpen: false,
+        }
+    },
+    computed: {
+        ...mapState(['isSidebarVisible', 'isMobile']),
+    },
+    mounted() {
+    this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
+    window.addEventListener('resize', () => {
+        this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
+    })
+    },
 }
 </script>
 
 <template>
-   <div :class="pageId" class="h-full w-full">
-    <div class="flex grid grid-cols-12 gap-4">
-        <div class="col-span-3 h-full">
-            <side-bar-spotify/>
+   <div :class="pageId">
+    <div class="flex gap-4 h-full">
+        <div :class="isSidebarVisible ? (isMobile ? 'w-1/3' : 'w-1/3') : 'w-full'">
+            <side-bar-spotify v-if="isSidebarVisible"/>
         </div>
-        <div class="col-span-9 h-full">
-            <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full ">
+        <div class="w-full">
+            <div class="bg-[#121212] rounded-lg shadow-lg p-4 h-full" :class="!isMobile ? 'w-full' : ''">
                 <div class="mb-2">
                     <NavbarSpotify/>
                 </div>

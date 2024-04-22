@@ -1,5 +1,5 @@
 <script>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/outline'
+import { ChevronLeftIcon, ChevronRightIcon, MenuIcon } from '@heroicons/vue/outline'
 import { mapState } from 'vuex'
 
 export default {
@@ -7,7 +7,8 @@ export default {
    inject: ['isMobile'],
    components: {
       ChevronLeftIcon,
-      ChevronRightIcon
+      ChevronRightIcon,
+      MenuIcon
    },
    data() {
       return {
@@ -20,12 +21,15 @@ export default {
          this.$store.dispatch('redirectToLogin')
       },
       logout() {
-      this.$store.dispatch('logout')
-      this.isOpen = false
-    }
+         this.$store.dispatch('logout')
+         this.isOpen = false
+      },
+      toggleSidebar() {
+         this.$store.commit('TOGGLE_SIDEBAR');
+      },
    },
    computed: {
-    ...mapState(['isLogin', 'imageUrl']),
+    ...mapState(['isLogin', 'imageUrl', 'isSidebarVisible']),
   },
   created() {
     this.$store.dispatch('fetchUserData')
@@ -36,6 +40,9 @@ export default {
 <template>
     <div :class="pageId">
       <nav class="h-16 flex items-center px-8 text-white">
+         <button @click="toggleSidebar" class="mr-2 bg-black rounded-full p-1 block md:hidden">
+            <MenuIcon class="h-6 w-6 text-white"/>
+         </button>
          <button class="mr-2 bg-black rounded-full p-1">
             <ChevronLeftIcon class="h-6 w-6 text-white"/>
          </button>

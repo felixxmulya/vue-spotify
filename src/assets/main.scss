@@ -51,51 +51,53 @@
         }
     }
 
-    @media screen and (max-width: 768px){
-        padding: 10px;
-    }
-}
-
-.SideBarSpotify{
-    .header-sidebar{
-        .spotify-logo{
-            width: 8rem;
-            height: auto;
-        }
-    }
-
-    .playlist-sidebar{
-        .PlaylistSideBarpotify{
-            .playlist-item{
-                display: flex;
-                align-items: center;
-                margin-bottom: 1rem;
-                max-height: 90vh;
+    .SideBarSpotify{
+        .header-sidebar{
+            .spotify-logo{
+                width: 8rem;
                 height: auto;
-                &::-webkit-scrollbar {
-                    width: 10px;
-                }
-
-                &::-webkit-scrollbar-track {
-                background: #121212;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                background: #888;
-                }
-
-                  &::-webkit-scrollbar-thumb:hover {
-                    background: #555;
-                }
-                .playlist-image{
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 10px;
+            }
+        }
+    
+        .playlist-sidebar{
+            .PlaylistSideBarpotify{
+                .playlist-item{
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                    max-height: 95vh;
+                    height: auto;
+                    &::-webkit-scrollbar {
+                        width: 10px;
+                    }
+    
+                    &::-webkit-scrollbar-track {
+                    background: #121212;
+                    }
+    
+                    &::-webkit-scrollbar-thumb {
+                    background: #888;
+                    }
+    
+                      &::-webkit-scrollbar-thumb:hover {
+                        background: #555;
+                    }
+                    .playlist-image{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 10px;
+                    }
                 }
             }
         }
     }
+
+    @media screen and (max-width: 768px){
+        padding: 10px;
+    }
+
 }
+
 
 .login-page{
     .login-navbar{
@@ -134,7 +136,7 @@
     }
 
     .header-title{
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
     .playlist-header-image {
         width: 100%;
@@ -160,6 +162,15 @@
 
           &::-webkit-scrollbar-thumb:hover {
             background: #555;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        .playlist-header-image{
+            width: 100%;
+            max-width: 150px;
+            max-height: 150px;
+            height: 150px;
         }
     }
 

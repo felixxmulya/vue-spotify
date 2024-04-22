@@ -1,21 +1,31 @@
 <script>
 import { HomeIcon, SearchIcon, LibraryIcon } from '@heroicons/vue/solid'
 import PlaylistSideBar from './PlaylistSideBar.vue'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'SideBarSpotify',
-  inject: ['isMobile'],
-  components: {
-    HomeIcon,
-    SearchIcon,
-    LibraryIcon,
-    PlaylistSideBar
-  },
-  data() {
-    return {
-        pageId: 'SideBarSpotify',
-        isOpen: false,
-    }
+    name: 'SideBarSpotify',
+
+    components: {
+        HomeIcon,
+        SearchIcon,
+        LibraryIcon,
+        PlaylistSideBar
+    },
+    data() {
+        return {
+            pageId: 'SideBarSpotify',
+            isOpen: false,
+        }
+    },
+    computed: {
+        ...mapState(['isSidebarVisible', 'isMobile']),
+    },
+    mounted() {
+    this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
+    window.addEventListener('resize', () => {
+      this.$store.commit('SET_IS_MOBILE', window.innerWidth <= 640)
+    })
   },
 }
 </script>
@@ -50,6 +60,5 @@ export default {
                 <PlaylistSideBar/>
             </div>
         </div>
-
     </div>
 </template>

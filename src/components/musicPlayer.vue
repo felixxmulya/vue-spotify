@@ -9,7 +9,7 @@ library.add(faRandom, faStepBackward, faPlayCircle, faPauseCircle, faPause, faSt
 
 export default {
     name: 'musicPlayer',
-    inject: ['isMobile'],
+
     components: {
         VolumeUpIcon,
         FontAwesomeIcon,
@@ -128,11 +128,11 @@ export default {
             </div>
             <div class="flex flex-col items-center w-full md:w-1/3 mb-4 md:mb-0 mt-1">
                 <div class="flex items-center">
-                    <button @click="shuffle" :class="shuffleActive ? 'text-green-500' : 'text-gray-300 hover:text-white'">
+                    <button @click="shuffle" :class="[shuffleActive ? 'text-green-500 hover:text-white' : 'text-gray-300 hover:text-white']">
                         <font-awesome-icon icon="random" class="h-6 w-6" />
                     </button>
                     <button @click="prevTrack">
-                        <font-awesome-icon icon="step-backward" class="h-7 w-7 text-gray-300 hover:text-white" />
+                        <font-awesome-icon :icon="['fas', 'step-backward']" class="h-7 w-7 text-gray-300 hover:text-white" />
                     </button>
                     <button @click="isPlaying ? pauseTrack() : playTrack()">
                         <font-awesome-icon icon="circle-play" v-if="!isPlaying" class="h-8 w-8 text-white" />
@@ -146,9 +146,11 @@ export default {
                         <font-awesome-icon icon="repeat" class="h-6 w-6" />
                     </button>
                 </div>
+                <!--
                 <div class="mb-3 w-full">
                     <input id="track" type="range" min="0" :max="trackDuration" v-model="trackPosition" @change="seekToPosition" class="w-full">
                 </div>
+                -->
             </div>
             <div class="flex items-center ">
                 <button @click="mute" class="mr-3">

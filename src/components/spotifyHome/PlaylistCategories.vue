@@ -4,7 +4,7 @@ import { mapState } from 'vuex'
 
 export default {
     name: 'PlaylistCategories',
-    inject: ['isMobile'],
+
     components: {},
     data() {
         return {
@@ -48,7 +48,7 @@ export default {
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-4">
             <router-link v-for="playlist in playlistFeatures" :key="playlist.id" :to="`/playlist/${playlist.id}`" class="card p-2 rounded-md hover:bg-[#424242] cursor-pointer relative group">
                 <div class="relative">
-                    <img v-if="playlist.images && playlist.images.length > 0" :src="playlist.images[0].url" alt="Playlist cover" class="card-img-top object-fit rounded-md bg-white mb-2">
+                    <img v-if="playlist.images && playlist.images.length > 0" :src="playlist.images[0].url" alt="Playlist cover" class="card-img-top object-fit rounded-md bg-white mb-2 w-auto h-auto">
                     <div class="absolute right-0 bottom-0 mb-2 mr-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         <button class="bg-green-500 text-black rounded-full h-14 w-14 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">

@@ -23,19 +23,19 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isLogin']),
+    ...mapState(['isLogin', 'isSidebarVisible']),
   },
 }
 </script>
 
-<template >
+<template>
     <div :class="pageId" >
-      <div class="flex grid grid-cols-12 gap-4">
-        <div class="col-span-3 h-full">
-          <side-bar-spotify/>
+      <div class="flex gap-4 h-full">
+        <div class="w-1/3">
+          <side-bar-spotify v-if="isSidebarVisible"/>
         </div>
-        <div class="col-span-9 h-full ">
-          <div class="bg-[#121212] rounded-lg shadow-lg p-4 w-full h-full main-home">
+        <div class="w-full ">
+          <div class="bg-[#121212] rounded-lg shadow-lg p-4 main-home h-full">
             <div class="mb-5">
               <NavbarSpotify/>
             </div>
@@ -50,6 +50,7 @@ export default {
             </div>
           </div>
         </div>
-      </div>
+
+        </div>
     </div>
 </template>

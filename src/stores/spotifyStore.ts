@@ -26,12 +26,20 @@ const initialState = {
     selectedPlaylist: {},
     songs: [],
     repeat: null,
+    isSidebarVisible: true,
+    isMobile: false,
 }
 
 export default createStore({
     state: { ...initialState },
 
     mutations: {
+        SET_IS_MOBILE(state, payload) {
+            state.isMobile = payload
+        },
+        TOGGLE_SIDEBAR(state) {
+            state.isSidebarVisible = !state.isSidebarVisible
+        },
         SET_LOGGED_IN(state, value) {
             state.isLogin = value
         },

@@ -51,7 +51,7 @@ export default {
         <img :src="selectedPlaylist.image" alt="Playlist Image" class="playlist-header-image mr-6 bg-white rounded-md">
         <div class="">
             <h3>Playlist</h3>
-            <h1 class="header-title text-white mb-2">{{ selectedPlaylist.title }}</h1>
+            <h1 class="header-title text-white mb-5">{{ selectedPlaylist.title }}</h1>
             <p class="text-sm text-gray-400 ">{{ selectedPlaylist.description }}</p>
         </div>
     </div>
