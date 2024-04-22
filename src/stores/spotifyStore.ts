@@ -35,7 +35,7 @@ export default createStore({
 
     mutations: {
         SET_IS_MOBILE(state, payload) {
-            state.isMobile = payload;
+            state.isMobile = payload
         },
         TOGGLE_SIDEBAR(state) {
             state.isSidebarVisible = !state.isSidebarVisible
@@ -76,7 +76,8 @@ export default createStore({
     },
     actions: {
         redirectToLogin({ state }) {
-            window.location.href = `${state.apiUrl}?client_id=${state.clientId}&redirect_uri=${state.redirectUrl}&scope=${state.scopes.join(' ')}&response_type=token&show_dialog=true`
+            const redirectUrl = process.env.NODE_ENV === 'production' ? 'https://vue-spotify88-clone.vercel.app/' : state.redirectUrl;
+            window.location.href = `${state.apiUrl}?client_id=${state.clientId}&redirect_uri=${redirectUrl}&scope=${state.scopes.join(' ')}&response_type=token&show_dialog=true`
         },
         fetchUserData({ commit }) {
             axios.get('https://api.spotify.com/v1/me', {

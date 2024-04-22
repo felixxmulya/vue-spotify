@@ -47,11 +47,11 @@ export default {
   <div :class="pageId">
     <nav class="login-navbar bg-black">
       <div class="flex flex-row items-center justify-between">
-        <router-link to="/" class="flex items-center text-white" :class="isMobile() ? '' : 'px-4'" >
+        <router-link to="/" class="flex items-center text-white" >
           <img src="https://i.ibb.co/FYbMXTm/spotify-icon.png" alt="Spotify" class="h-auto w-10 mr-2"/>
           <span class="spotify-title font-semibold text-xl tracking-tight">Spotify</span>
         </router-link>
-        <div v-if="!isMobile()" class="px-4">
+        <div class="px-4">
           <div class="text-sm text-white">
             <a v-for="link in links" :key="link.text" :href="link.href" class="block mt-4 md:inline-block md:mt-0 hover:text-green-500 mr-4">
               {{ link.text }}
